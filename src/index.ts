@@ -252,7 +252,7 @@ const updateElements = (
     if (t.body === true) {
       body.insertAdjacentElement("beforeend", t.element)
     } else if (t.pbody === true) {
-      body.insertAdjacentElement("afterbegin", t.element)
+      body.prepend(t.element)
     } else {
       head.insertBefore(t.element, headCountEl)
     }
