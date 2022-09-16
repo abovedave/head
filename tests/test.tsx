@@ -221,5 +221,14 @@ test("body script", async (t) => {
 
   const script = await page.$("[data-meta-body]")
   const scriptHtml = await script.innerHTML()
+  t.is(scriptHtml, `console.log('bye')`)
+})
+
+test('pbody script', async (t) => {
+  const page = await t.context.browser.newPage()
+  await page.goto(`http://localhost:3000`)
+
+  const script = await page.$('[data-meta-body]')
+  const scriptHtml = await script.innerHTML()
   t.is(scriptHtml, `console.log('hi')`)
 })

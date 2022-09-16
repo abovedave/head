@@ -225,6 +225,7 @@ const updateElements = (
   let newElements = tags.map((tag) => ({
     element: createElement(tag.tag, tag.props, document),
     body: tag.props.body ?? false,
+    pbody: tag.props.pbody ?? false,
   }))
 
   newElements = newElements.filter((newEl) => {
@@ -250,6 +251,8 @@ const updateElements = (
   newElements.forEach((t) => {
     if (t.body === true) {
       body.insertAdjacentElement("beforeend", t.element)
+    } else if (t.pbody === true) {
+      body.insertAdjacentElement("afterbegin", t.element)
     } else {
       head.insertBefore(t.element, headCountEl)
     }

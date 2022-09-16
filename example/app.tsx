@@ -65,6 +65,10 @@ export const createApp = () => {
         script: [
           {
             children: `console.log('hi')`,
+            pbody: true,
+          },
+          {
+            children: `console.log('bye')`,
             body: true,
           },
         ],

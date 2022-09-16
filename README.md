@@ -134,13 +134,26 @@ useHead({
 })
 ```
 
-To render tags at the end of the `<body>`, set `body: true` in a HeadAttrs Object.
+To render tags at the **start** of the `<body>`, set `pbody: true` in a HeadAttrs Object.
 
 ```ts
 useHead({
   script: [
     {
       children: `console.log('Hello world!')`,
+      pbody: true,
+    },
+  ],
+})
+```
+
+To render tags at the **end** of the `<body>`, set `body: true` in a HeadAttrs Object.
+
+```ts
+useHead({
+  script: [
+    {
+      children: `console.log('Goodbye world!')`,
       body: true,
     },
   ],
