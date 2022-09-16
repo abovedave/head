@@ -262,7 +262,7 @@ const updateElements = (
     "" +
       (headCount -
         oldHeadElements.length +
-        newElements.filter((t) => !t.body).length),
+        newElements.filter((t) => !t.body || !t.pbody).length),
   )
 }
 
@@ -405,7 +405,7 @@ export const useHead = (obj: MaybeRef<HeadObject>) => {
 
 const tagToString = (tag: HeadTag) => {
   let isBodyTag = false
-  if (tag.props.body) {
+  if (tag.props.body || tag.props.pbody) {
     isBodyTag = true
     // avoid rendering body attr
     delete tag.props.body
@@ -435,7 +435,7 @@ export const renderHeadToString = (head: HeadClient): HTMLResult => {
       Object.assign(htmlAttrs, tag.props)
     } else if (tag.tag === "bodyAttrs") {
       Object.assign(bodyAttrs, tag.props)
-    } else if (tag.props.body) {
+    } else if (tag.props.body || tag.props.pbody) {
       bodyTags.push(tagToString(tag))
     } else {
       tags.push(tagToString(tag))
